@@ -10,9 +10,9 @@ namespace ChatApp.API.Data
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
 
             // Replace with your actual connection string (same as appsettings.json)
-            var connectionString = "Server=DEVLOPER;Database=ChatAppDb;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True;";
+            var connectionString = "Host=nozomi.proxy.rlwy.net;Port=44466;Database=railway;Username=postgres;Password=gIYtsVWzTcTDfadYsPxkybPPQTGgsPfV";
 
-            optionsBuilder.UseSqlServer(connectionString);
+            optionsBuilder.UseNpgsql(connectionString);
 
             return new AppDbContext(optionsBuilder.Options);
         }
