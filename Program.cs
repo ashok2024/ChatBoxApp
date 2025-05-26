@@ -74,12 +74,10 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo 
-    { 
-        Title = "SwaggerTest API", 
-        Version = "v1",
-        Description = "Just testing Swagger"
-    });
+    c.SwaggerGeneratorOptions = new Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorOptions
+    {
+        IgnoreObsoleteActions = true,  
+    };
 });
 builder.Services.AddAuthorization();
 var app = builder.Build();
