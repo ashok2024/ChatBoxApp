@@ -34,7 +34,7 @@ namespace ChatApp.Api.Controllers
                     Email = u.Username,
                     DisplayName = u.DisplayName,
                     IsOnline = !string.IsNullOrEmpty(u.CurrentConnectionId), 
-                    ProfileImageUrl = !string.IsNullOrEmpty(u.ImagePath) ? $"{Request.Scheme}://{Request.Host}/{u.ImagePath}": $"{Request.Scheme}://{Request.Host}/uploads/Sample_User_Icon.png"
+                    ProfileImageUrl = u.ImagePath
                 })
                 .ToList();
 

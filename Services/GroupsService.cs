@@ -22,21 +22,12 @@ namespace ChatApp.Api.Services
         {
             string? imagePath = null;
 
-            if (image != null && image.Length > 0)
+           if (image != null && image.Length > 0)
             {
-                var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
-                Directory.CreateDirectory(uploadsFolder);
-
-                var uniqueFileName = $"{Guid.NewGuid()}_{Path.GetFileName(image.FileName)}";
-                var fullPath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                using (var stream = new FileStream(fullPath, FileMode.Create))
-                {
-                    await image.CopyToAsync(stream);
-                }
-
-                imagePath = $"uploads/{uniqueFileName}";
+                var cloudinaryService = new CloudinaryService();
+                 imagePath = await cloudinaryService.UploadImageAsync(image);
             }
+
 
             //List<string> members = JsonSerializer.Serialize(dto.Members.s);
 

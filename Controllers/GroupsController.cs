@@ -57,7 +57,7 @@ public class GroupsController : ControllerBase
             g.GroupName,
             g.MembersEmails,
             g.CreatedAt,
-            ImagePath = string.IsNullOrEmpty(g.ImagePath) ? null : $"{Request.Scheme}://{Request.Host}/{g.ImagePath}"
+            ImagePath = g.ImagePath
         }).ToList();
 
         return Ok(GroupsData);
