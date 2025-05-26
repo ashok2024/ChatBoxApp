@@ -16,7 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-    
+
 // 1) Add controllers (even if unused) and Swagger
 builder.Services.AddControllers();
 builder.Services.AddScoped<JwtService>();
@@ -34,7 +34,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend",
         policy =>
         {
-            policy.WithOrigins("http://localhost:4200") // Angular frontend
+            policy.WithOrigins("http://localhost:4200","https://chatbox-client-app-visn.vercel.app") // Angular frontend
                   .AllowAnyHeader()
                   .AllowAnyMethod()
                   .AllowCredentials(); // Optional: only if you're using cookies/auth
