@@ -12,20 +12,21 @@ namespace ChatApp.Api.Services
     public class GroupService : IGrouupService
     {
         private readonly AppDbContext _context;
+        private readonly ICloudinaryService _cloudinaryService;
 
-        public GroupService(AppDbContext context)
+        public GroupService(AppDbContext context, ICloudinaryService cloudinaryService)
         {
             _context = context;
+            _cloudinaryService = cloudinaryService;
         }
 
         public async Task<Group> CreateGroup(CreateGroupDto dto, IFormFile? image)
         {
             string? imagePath = null;
 
-           if (image != null && image.Length > 0)
+            if (image != null && image.Length > 0)
             {
-                var cloudinaryService = new CloudinaryService();
-                 imagePath = await cloudinaryService.UploadImageAsync(image);
+                imagePath = await _cloudinaryService.UploadImageAsync(image);
             }
 
 
@@ -56,7 +57,7 @@ namespace ChatApp.Api.Services
                          .Where(g => g.MembersEmails.Contains(userEmail))
                          .ToListAsync();
         }
-       
+
         public async Task<bool> IsUserInGroupAsync(string userEmail, int groupId)
         {
             return await _context.Groups

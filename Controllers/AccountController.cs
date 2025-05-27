@@ -16,11 +16,13 @@ namespace ChatApp.Api.Controllers
     {
         private readonly IUserService _userService;
         private readonly IConfiguration _configuration;
+        private readonly ICloudinaryService _cloudinaryService;
 
-        public AccountController(IUserService userService, IConfiguration configuration)
+        public AccountController(IUserService userService, IConfiguration configuration, ICloudinaryService cloudinaryService)
         {
             _userService = userService;
             _configuration = configuration;
+            _cloudinaryService = cloudinaryService;
         }
 
         [HttpPost("login")]
@@ -70,8 +72,7 @@ namespace ChatApp.Api.Controllers
 
             if (image != null && image.Length > 0)
             {
-                var cloudinaryService = new CloudinaryService();
-                 imagePath = await cloudinaryService.UploadImageAsync(image);
+                 imagePath = await  _cloudinaryService.UploadImageAsync(image);
             }
 
             var newUser = await _userService.RegisterUserAsync(

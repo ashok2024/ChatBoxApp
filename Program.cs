@@ -14,7 +14,8 @@ var builder = WebApplication.CreateBuilder(args);
 //     options.UseSqlServer(connectionString));
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"),
+        npgsqlOptions => npgsqlOptions.EnableRetryOnFailure())); 
 
 
 // 1) Add controllers (even if unused) and Swagger
@@ -23,6 +24,7 @@ builder.Services.AddScoped<JwtService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IChatService, ChatService>();
 builder.Services.AddScoped<IGrouupService, GroupService>();
+builder.Services.AddScoped<ICloudinaryService, CloudinaryService>();
 builder.Services.AddSignalR();
 
 var jwtSettings = builder.Configuration.GetSection("Jwt");

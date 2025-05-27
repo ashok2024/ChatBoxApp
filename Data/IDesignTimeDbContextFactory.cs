@@ -10,7 +10,7 @@ namespace ChatApp.API.Data
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
 
             // Replace with your actual connection string (same as appsettings.json)
-            var connectionString = "Host=nozomi.proxy.rlwy.net;Port=44466;Database=railway;Username=postgres;Password=gIYtsVWzTcTDfadYsPxkybPPQTGgsPfV";
+            var connectionString = "Host=ep-autumn-night-a8a5wxku-pooler.eastus2.azure.neon.tech;Database=neondb;Username=neondb_owner;Password=npg_HlwnbxVW07UO;SSL Mode=Require;Trust Server Certificate=true";
 
             optionsBuilder.UseNpgsql(connectionString);
 

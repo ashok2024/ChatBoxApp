@@ -331,3 +331,4 @@ D:\freelancer2025\ChatBoxApp\obj\Debug\net9.0\refint\Chat.Api.dll
 D:\freelancer2025\ChatBoxApp\obj\Debug\net9.0\Chat.Api.pdb
 D:\freelancer2025\ChatBoxApp\obj\Debug\net9.0\Chat.Api.genruntimeconfig.cache
 D:\freelancer2025\ChatBoxApp\obj\Debug\net9.0\ref\Chat.Api.dll
+D:\freelancer2025\ChatBoxApp\bin\Debug\net9.0\CloudinaryDotNet.dll
